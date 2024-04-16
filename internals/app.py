@@ -1,17 +1,14 @@
 import json
-from tools.get_jira_ticket import get_jira_ticket_description
-from tools.github_integration import get_last_closed_pull_requests
-from tools.templates import (
+from .tools.get_jira_ticket import get_jira_ticket_description
+from .tools.github_integration import get_last_closed_pull_requests
+from .tools.templates import (
     PROMPT_START_TEMPLATE
 )
-from tools.gemini_ai import get_gemini_model
-from tools.extract_jira_ticket_from_pr import extract_jira_ticket_from_pr_title
+from .tools.gemini_ai import get_gemini_model
+from .tools.extract_jira_ticket_from_pr import extract_jira_ticket_from_pr_title
 import argparse
 
-
-
-if __name__ == "__main__":
-
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--git_repository", type=str, required=True, help="Github repository in format owner/repository")
 
@@ -41,5 +38,7 @@ if __name__ == "__main__":
         print("-"*100)
         print(answer)
 
-        
 
+
+if __name__ == "__main__":
+    main()
