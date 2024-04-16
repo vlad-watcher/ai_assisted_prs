@@ -1,5 +1,6 @@
 import os
 import json
+from google.api_core.exceptions import InvalidArgument
 from .tools.get_jira_ticket import get_jira_ticket_description
 from .tools.github_integration import get_last_closed_pull_requests
 from .tools.templates import (
@@ -37,7 +38,11 @@ def main():
         pr = {"project_name": repo_name,"link_to_pr": f"https://github.com/{github_repo}/pull/{pr_number}", **pr}
         json_string_pr = json.dumps(pr)
         full_prompt = PROMPT_START_TEMPLATE + json_string_pr
-        answer = gemini_model.generate_content(full_prompt).text
+        try:
+            answer = gemini_model.generate_content(full_prompt).text
+        except InvalidArgument as invalid_argument_error:
+            print(invalid_argument_error)
+            exit(-1)
 
         ai_answers.append(answer)
 
