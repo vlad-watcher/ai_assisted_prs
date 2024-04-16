@@ -7,11 +7,16 @@ def get_last_closed_pull_requests(github_repository: str, prs:str) -> dict[str, 
     Function must return a dictionary where every key in the root is the PR number.
     And inside PR number key is 2 keys: title, commits
     """
+    gh_token = os.getenv('GH_TOKEN')
 
     owner, repository = github_repository.split("/")
     url = f"https://api.github.com/repos/{owner}/{repository}/pulls?state=closed&per_page={prs}"
-    headers = {"Authorization": f"Bearer {os.getenv('GH_TOKEN')}"}
-    response = requests.get(url,headers=headers,timeout=30).json()
+    
+    session = requests.Session()
+    if gh_token:
+        session.headers.update({"Authorization": f"Bearer {gh_token}"})
+
+    response = session.get(url,timeout=30).json()
 
     # Filter only merged PRs
     response = [pr for pr in response if pr["merged_at"] is not None]
