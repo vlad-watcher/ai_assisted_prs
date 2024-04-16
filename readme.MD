@@ -21,6 +21,15 @@ Can be created here: https://github.com/settings/tokens
 - JIRA_API_KEY
 - GH_TOKEN
 
+## .ENV FILE
+You can create a .env file in project root instead of adding environment variables directly
+```
+GEMINI_KEY=...
+JIRA_EMAIL=...
+JIRA_API_KEY=...
+GH_TOKEN=...
+```
+
 ## HOW TO RUN
 ```
 python app.py --gh_repo simple-elf/allure-report-action
