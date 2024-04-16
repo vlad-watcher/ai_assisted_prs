@@ -23,6 +23,7 @@ Can be created here: https://github.com/settings/tokens
 - GEMINI_KEY - REQUIRED
 - JIRA_EMAIL (your JIRA email) - Not mandatory
 - JIRA_API_KEY - Not mandatory
+- JIRA_SERVER - Not mandatory
 - GH_TOKEN - Not mandatory if use only for public repos
 
 ## .ENV FILE

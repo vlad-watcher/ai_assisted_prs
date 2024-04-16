@@ -11,7 +11,7 @@ def get_jira_ticket_description(jira_ticket):
     Returns:
         (str): Ticket description
     """
-    jira_server = 'https://planetwatchers.atlassian.net/'
+    jira_server = os.getenv("JIRA_SERVER")
     jira_username = os.getenv("JIRA_EMAIL")
     jira_password = os.getenv("JIRA_API_KEY")
 
