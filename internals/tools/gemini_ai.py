@@ -11,14 +11,11 @@ def get_gemini_model():
 
     gemini_key = os.getenv("GEMINI_KEY")
 
-    gemini.configure(api_key=gemini_key)
+    if not gemini_key:
+        print("Please set GEMINI_KEY environment variable")
+        exit(-1)
 
+    gemini.configure(api_key=gemini_key)
+    
     model = gemini.GenerativeModel("gemini-pro")
     return model
-
-if __name__ == "__main__":
-    gemini_key = os.getenv("GEMINI_KEY")
-
-    gemini.configure(api_key=gemini_key)
-
-    print(list(gemini.list_models()))
