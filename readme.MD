@@ -1,3 +1,7 @@
+## AI ASSISTED PR DESCRIPTIONS
+This project is supposed to feed all information about last 10 Pull Requests to Gemini
+and get meaningful and clear description about what was done in the task.
+
 ## GEMINI API KEY
 Can be created here: https://makersuite.google.com/app/apikey
 
