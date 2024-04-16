@@ -26,7 +26,7 @@ def get_last_closed_pull_requests(github_repository: str, prs:str) -> dict[str, 
         for pr in response:
             pr_number = str(pr["number"])
             commits_url = pr["commits_url"]
-            commits = requests.get(commits_url, headers=headers, timeout=30).json()
+            commits = session.get(commits_url, timeout=30).json()
             commit_messages = [commit["commit"]["message"] for commit in commits]
             pull_requests[pr_number] = {
                 "title": pr["title"],
@@ -36,6 +36,5 @@ def get_last_closed_pull_requests(github_repository: str, prs:str) -> dict[str, 
                 "jira_description":""
             }
     except Exception as e:
-        print(response)
         print(e)
     return pull_requests
