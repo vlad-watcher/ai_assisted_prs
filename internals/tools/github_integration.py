@@ -1,7 +1,7 @@
 import requests
 import os
 
-def get_last_closed_pull_requests(github_repository: str) -> dict[str, list[str]]:
+def get_last_closed_pull_requests(github_repository: str, prs:str) -> dict[str, list[str]]:
     """Build a function that accepts github repository string argument in a format 'owner/repository' and get 10 last closed pull requests from that repo.
     For every PR get all its commit messages texts.
     Function must return a dictionary where every key in the root is the PR number.
@@ -9,7 +9,7 @@ def get_last_closed_pull_requests(github_repository: str) -> dict[str, list[str]
     """
 
     owner, repository = github_repository.split("/")
-    url = f"https://api.github.com/repos/{owner}/{repository}/pulls?state=closed&per_page=5"
+    url = f"https://api.github.com/repos/{owner}/{repository}/pulls?state=closed&per_page={prs}"
     headers = {"Authorization": f"Bearer {os.getenv('GH_TOKEN')}"}
     response = requests.get(url,headers=headers,timeout=30).json()
 
