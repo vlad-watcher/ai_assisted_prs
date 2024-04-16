@@ -30,6 +30,11 @@ JIRA_API_KEY=...
 GH_TOKEN=...
 ```
 
+## INSTALL REQUIREMENTS
+```
+pip install -r requirements.txt
+```
+
 ## HOW TO RUN
 ```
 python app.py --gh_repo simple-elf/allure-report-action
