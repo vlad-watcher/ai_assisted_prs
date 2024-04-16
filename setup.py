@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 
+
 setup(
     name='ai_assisted_prs',
     description='Tool for enchansing PRs information with AI',
@@ -12,7 +13,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'ai_pr = app',
+            'ai_pr = internals.app:main',
         ],
     },
 )
