@@ -11,13 +11,14 @@ import argparse
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--git_repository", type=str, required=True, help="Github repository in format owner/repository")
+    parser.add_argument("--prs", type=str, default="10", help="Number of PRs to process")
 
     args = parser.parse_args()
     github_repo = args.git_repository
 
     repo_name = github_repo.split("/")[1]
 
-    repository_prs = get_last_closed_pull_requests(github_repo)
+    repository_prs = get_last_closed_pull_requests(github_repository=github_repo, prs=args.prs)
 
     gemini_model = get_gemini_model()
     ai_answers = []
