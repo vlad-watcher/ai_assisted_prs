@@ -37,5 +37,5 @@ pip install -r requirements.txt
 
 ## HOW TO RUN
 ```
-python app.py --gh_repo simple-elf/allure-report-action
+python ai_prs.py --gh_repo simple-elf/allure-report-action
 ```
